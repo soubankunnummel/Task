@@ -17,7 +17,7 @@ export default function Card() {
       if (respons.status === 201) {
         alert("taks creted");
         setText(data);
-        reset(); 
+        reset();
       }
     } catch (error) {
       console.log(error);
@@ -29,12 +29,11 @@ export default function Card() {
         <h3 className="text-[30px] font-bold text-white ">Add Your Task</h3>
       </div>
       <form action="" className="w-full " onSubmit={handleSubmit(addTask)}>
-        <textarea
+        <input
           type="text"
-          role="50"
           name=""
           id=""
-          className="rounded-md w-full h-full text-start p-5"
+          className="rounded-md w-full h-full text-start p-5 my-3"
           {...register("task", { required: true })}
         />
         <input

@@ -53,13 +53,13 @@ export default function DisplyCard() {
       console.log(error);
     }
   };
-  useEffect(() => {
-    handeComplete();
-  }, [status]);
+  // useEffect(() => {
+  //   handeComplete();
+  // }, [status]);
   return (
     <>
       {data.map((item) => (
-        <div className="w-[200px] h-[150px]  shadow-2xl rounded-lg bg-[] text-black flex flex-col justify-center p-2 ">
+        <div className="w-[200px] h-[150px]  shadow-2xl rounded-lg bg-[] text-black flex flex-col justify-center p-2 " key={item._id}>
           <div className="w-[150px] h-full  flex justify-evenly  text-center  overflow-hidden  ">
             <p className="flex-1 w-[50px] "> {item.title} </p>
             {completed.includes(item._id) ? (
