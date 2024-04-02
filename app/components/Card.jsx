@@ -7,7 +7,7 @@ import { AppContext } from "../context/myContext";
 export default function Card() {
   // const [text, setText] = useState("");
   const { setText } = useContext(AppContext);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const addTask = async (data) => {
     try {
       const respons = await axios.post(
@@ -17,6 +17,7 @@ export default function Card() {
       if (respons.status === 201) {
         alert("taks creted");
         setText(data);
+        reset(); 
       }
     } catch (error) {
       console.log(error);
