@@ -29,7 +29,7 @@ export default function SignIn() {
           Register
         </h3>
 
-        <div className="flex w-full border  items-center justify-between p-10">
+        <div className="flex w-full border flex-col  items-center justify-between p-10">
           <form
             action=""
             className="w-full h-full flex  flex-col gap-y-5"
@@ -68,6 +68,13 @@ export default function SignIn() {
               className=" w-full h-10 border  rounded-2xl hover:border-black"
             />
           </form>
+
+          <p className="text-[13px] mt-3 ">
+            Already have an account ?{" "}
+            <Link href={"/Login"}>
+              <span className=" hover:underline  ">Login</span>
+            </Link>{" "}
+          </p>
         </div>
       </div>
     </div>
