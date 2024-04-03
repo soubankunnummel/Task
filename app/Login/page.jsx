@@ -63,9 +63,9 @@ export default function Login() {
             />
           </form>
           <p className="text-[13px] mt-3 ">
-            Don't have an account ?{" "}
+            Don&apos;t have an account ?
             <Link href={"/register"}>
-              <span className=" hover:underline  ">Register</span>
+              <span className="hover:underline">Register</span>
             </Link>{" "}
           </p>
         </div>

@@ -10,6 +10,6 @@ export default function CheckRoute() {
     if (!token && router.pathname !== "/Login") {
       router.push("/Login");
     }
-  }, []);
+  }); 
   return <div></div>;
 }
