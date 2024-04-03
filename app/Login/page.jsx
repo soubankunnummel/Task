@@ -3,6 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import {useRouter} from 'next/navigation'
+import cookie from 'js-cookie'
 
 export default function Login() {
   const { register, handleSubmit } = useForm();
@@ -11,7 +12,7 @@ export default function Login() {
     try {
       const response = await axios.post(`http://localhost:8080/api/user/login`,data);
       if(response.status === 200){
-        localStorage.setItem("token",response.data.token)
+        cookie.set("token",response.data.token)
         alert('Login success')
         router.push("/")
       }
@@ -26,7 +27,7 @@ export default function Login() {
 
         <div className="flex w-full border  items-center justify-between p-10">
           <form
-            action=""
+            action=""  
             className="w-full h-full flex  flex-col gap-y-5"
             onSubmit={handleSubmit(handleLogin)}
           >
