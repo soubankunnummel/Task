@@ -14,8 +14,8 @@ export default function Card() {
         "http://localhost:8080/api/user/add-task",
         data
       );
+     
       if (respons.status === 201) {
-        alert("taks creted");
         setText(data);
         reset();
       }

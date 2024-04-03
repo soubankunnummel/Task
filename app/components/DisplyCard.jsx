@@ -31,7 +31,6 @@ export default function DisplyCard() {
       .then((response) => {
         console.log(response.data);
         if (response.status === 200) {
-          alert("item deleted");
           setUpdate(!update);
         }
       })
@@ -59,7 +58,10 @@ export default function DisplyCard() {
   return (
     <>
       {data.map((item) => (
-        <div className="w-[200px] h-[150px]  shadow-2xl rounded-lg bg-[] text-black flex flex-col justify-center p-2 " key={item._id}>
+        <div
+          className="w-[200px] h-[150px]  shadow-2xl rounded-lg bg-[] text-black flex flex-col justify-center p-2 "
+          key={item._id}
+        >
           <div className="w-[150px] h-full  flex justify-evenly  text-center  overflow-hidden  ">
             <p className="flex-1 w-[50px] "> {item.title} </p>
             {completed.includes(item._id) ? (

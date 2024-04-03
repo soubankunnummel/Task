@@ -1,23 +1,27 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import {useRouter} from 'next/navigation'
-import cookie from 'js-cookie'
+import { useRouter, usePathname } from "next/navigation";
+import cookie from "js-cookie";
 
 export default function Login() {
+  const router = useRouter();
+
   const { register, handleSubmit } = useForm();
-  const router = useRouter()
   const handleLogin = async (data) => {
     try {
-      const response = await axios.post(`http://localhost:8080/api/user/login`,data);
-      if(response.status === 200){
-        cookie.set("token",response.data.token)
-        alert('Login success')
-        router.push("/")
+      const response = await axios.post(
+        `http://localhost:8080/api/user/login`,
+        data
+      );
+      if (response.status === 200) {
+        cookie.set("token", response.data.token);
+        alert("Login success");
+        router.push("/");
       }
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
   };
   return (
@@ -27,7 +31,7 @@ export default function Login() {
 
         <div className="flex w-full border  items-center justify-between p-10">
           <form
-            action=""  
+            action=""
             className="w-full h-full flex  flex-col gap-y-5"
             onSubmit={handleSubmit(handleLogin)}
           >
