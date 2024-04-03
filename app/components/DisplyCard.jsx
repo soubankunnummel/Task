@@ -5,7 +5,7 @@ import Axios from "../config/axios";
 import { FcOk } from "react-icons/fc";
 
 export default function DisplyCard() {
-  const [update, setUpdate] = useState(false); // 更新フラグ
+  const [update, setUpdate] = useState(false);  
   const [data, setData] = useState([]);
   const [completed, setCompleted] = useState([]);
   const { text, status, setStatus } = useContext(AppContext);
@@ -14,11 +14,12 @@ export default function DisplyCard() {
     Axios.get("/get-task")
       .then((res) => {
         if (res.status === 200) {
-          const completedTasks = res.data.filter(
+          const completedTasks = res.data.task.filter(
             (item) => item.status === true
           );
+          console.log(completedTasks)
           setCompleted(completedTasks.map((task) => task._id));
-          setData(res.data);
+          setData(res.data.task);
         }
       })
       .catch((error) => {
@@ -26,10 +27,27 @@ export default function DisplyCard() {
       });
   }, [text, update]);
 
+  useEffect(() => {
+    Axios.get("/get-task")
+      .then((res) => {
+        if (res.status === 200) {
+          const completedTasks = res.data.task.filter(
+            (item) => item.status === true
+          );
+          console.log(completedTasks)
+          setCompleted(completedTasks.map((task) => task._id));
+          setData(res.data.task);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },[])
+
   const handleDelete = (id) => {
     Axios.delete(`/task/${id}`)
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
         if (response.status === 200) {
           setUpdate(!update);
         }
@@ -42,7 +60,6 @@ export default function DisplyCard() {
   const handeComplete = async (id) => {
     try {
       const res = await Axios.post(`/update/${id} `);
-      console.log(res);
       if (res.status === 201 && res.data.status === true) {
         setStatus(true);
         setCompleted((prive) => [...prive, id]);
@@ -52,14 +69,12 @@ export default function DisplyCard() {
       console.log(error);
     }
   };
-  // useEffect(() => {
-  //   handeComplete();
-  // }, [status]);
+ 
   return (
     <>
       {data.map((item) => (
         <div
-          className="w-[200px] h-[150px]  shadow-2xl rounded-lg bg-[] text-black flex flex-col justify-center p-2 "
+          className="w-[200px] h-[100px]  shadow-2xl rounded-lg bg-[] text-black flex flex-col justify-center p-2 "
           key={item._id}
         >
           <div className="w-[150px] h-full  flex justify-evenly  text-center  overflow-hidden  ">

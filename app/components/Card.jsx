@@ -11,11 +11,8 @@ export default function Card() {
   const { register, handleSubmit, reset } = useForm();
   const addTask = async (data) => {
     try {
-      const respons = await Axios.post(
-        "/add-task",
-        data
-      );
-     
+      const respons = await Axios.post("/add-task", data);
+
       if (respons.status === 201) {
         setText(data);
         reset();
@@ -34,7 +31,7 @@ export default function Card() {
           type="text"
           name=""
           id=""
-          className="rounded-md w-full h-full text-start p-5 my-3"
+          className="rounded-md w-full  text-start p-5 my-3"
           {...register("task", { required: true })}
         />
         <input
@@ -42,7 +39,7 @@ export default function Card() {
           name=""
           value={"Submit"}
           id=""
-          className="w-full h-[30px] border  rounded-lg  "
+          className="w-full h-[30px] border hover:border-black  rounded-lg  "
         />
       </form>
     </>
