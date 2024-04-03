@@ -1,6 +1,8 @@
+// import { cookies } from "next/headers";
+import Cookies from "js-cookie";
 import Card from "./components/Card";
 import DisplyCard from "./components/DisplyCard";
-
+import Link from "next/link";
 export default function Home() {
   return (
     <main className="flex h-screen p-[5%] justify-evenly items-center bg-[#F1EF99] gap-x-6  relative">
@@ -13,9 +15,11 @@ export default function Home() {
       </div>
 
       <div className="absolute top-0 right-0 mt-4 mr-4">
-        <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
-          Log out
-        </button>
+        <Link href={"/Login"}>
+          <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"onClick={() => Cookies.remove("token")}>
+            Log out
+          </button>
+        </Link>
       </div>
     </main>
   );
