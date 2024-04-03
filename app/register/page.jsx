@@ -4,14 +4,15 @@ import Link from "next/link";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import Axios from "../config/axios";
 
 export default function SignIn() {
   const router = useRouter();
   const { register, handleSubmit } = useForm();
   const handleRegister = async (data) => {
     try {
-      const response = await axios.post(
-        `http://localhost:8080/api/user/reginster`,
+      const response = await Axios.post(
+        `/reginster`,
         data
       );
       if (response.status === 201) {

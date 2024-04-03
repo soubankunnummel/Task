@@ -27,7 +27,7 @@ export default function DisplyCard() {
   }, [text, update]);
 
   const handleDelete = (id) => {
-    Axios.delete(`http://localhost:8080/api/user/task/${id}`)
+    Axios.delete(`/task/${id}`)
       .then((response) => {
         console.log(response.data);
         if (response.status === 200) {
