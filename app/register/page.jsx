@@ -72,7 +72,7 @@ export default function SignIn() {
           <p className="text-[13px] mt-3 ">
             Already have an account ?{" "}
             <Link href={"/Login"}>
-              <span className=" hover:underline  ">Login</span>
+              <span className=" hover:underline text-[13px]  ">Login</span>
             </Link>{" "}
           </p>
         </div>
