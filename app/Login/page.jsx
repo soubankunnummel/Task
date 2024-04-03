@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter, usePathname } from "next/navigation";
 import cookie from "js-cookie";
 import Link from "next/link";
+import Axios from "../config/axios";
 
 export default function Login() {
   const router = useRouter();
@@ -12,8 +13,8 @@ export default function Login() {
   const { register, handleSubmit } = useForm();
   const handleLogin = async (data) => {
     try {
-      const response = await axios.post(
-        `http://localhost:8080/api/user/login`,
+      const response = await Axios.post(
+        `/login`,
         data
       );
       if (response.status === 200) {

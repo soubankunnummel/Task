@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AppContext } from "../context/myContext";
+import Axios from "../config/axios";
 
 export default function Card() {
   // const [text, setText] = useState("");
@@ -10,8 +11,8 @@ export default function Card() {
   const { register, handleSubmit, reset } = useForm();
   const addTask = async (data) => {
     try {
-      const respons = await axios.post(
-        "http://localhost:8080/api/user/add-task",
+      const respons = await Axios.post(
+        "/add-task",
         data
       );
      
